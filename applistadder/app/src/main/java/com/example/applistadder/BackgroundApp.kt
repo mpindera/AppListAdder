@@ -20,15 +20,12 @@ fun BackgroundApp() {
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        Color(0xFFCFB6AF),
+                        Color(0xB2CFB6AF),
                         Color(0xFFDEE3E9)
                     ),
                     start = Offset(x = 0f, y = 0f),
                     end = Offset(x = 1000f, y = 500f)
                 )
             )
-    ) {
-
-        ButtonToAdd()
-    }
+    )
 }

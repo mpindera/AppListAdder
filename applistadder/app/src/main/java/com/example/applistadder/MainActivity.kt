@@ -21,6 +21,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     BackgroundApp()
                     AdderList()
+                    ButtonToAdd()
                 }
             }
         }
