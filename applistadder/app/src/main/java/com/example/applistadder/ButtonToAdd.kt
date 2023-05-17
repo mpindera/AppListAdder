@@ -37,7 +37,7 @@ fun ButtonToAdd() {
                 tint = Color.White,
                 modifier = Modifier
                     .size(50.dp)
-                    .background(color = Color(0xFF966874), shape = CircleShape)
+                    .background(color = Color(0xFFC7BA8D), shape = CircleShape)
             )
         }
 

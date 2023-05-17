@@ -1,13 +1,10 @@
 package com.example.applistadder
 
-import android.content.Context
-import android.graphics.Paint.Align
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,20 +14,31 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+
+data class ListData(
+    var time: String,
+    var data: String,
+    var description: String
+)
 
 @Composable
-@Preview
-fun AdderList() {
+fun AdderList(navController: NavController) {
+
+    val showDetails = remember { mutableStateOf(false) }
+
     val names = listOf(
         ListData("12:00", "01.05.2023", "Show"),
         ListData("13:00", "11.05.2023", "ShowBAB"),
@@ -59,7 +67,11 @@ fun AdderList() {
                     .shadow(elevation = 2.dp)
                     .padding(10.dp)
                     .fillMaxWidth()
-                    .clickable { Toast.makeText(context,listdata.time,Toast.LENGTH_SHORT).show()},
+                    .clickable {
+                        navController.navigate("detail/${listdata.description}")
+//                        Toast.makeText(context,listdata.time,Toast.LENGTH_SHORT).show()
+
+                    },
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
@@ -94,4 +106,10 @@ fun AdderList() {
 
         }
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun AdderListPreview() {
+    AdderList(navController = rememberNavController())
 }
