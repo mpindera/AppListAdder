@@ -10,17 +10,24 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+
 
 @Composable
-@Preview
-fun ButtonToAdd() {
+fun ButtonToAdd(
+    navController: NavController
+) {
     var context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -30,7 +37,12 @@ fun ButtonToAdd() {
             ),
         contentAlignment = Alignment.BottomEnd
     ) {
-        IconButton(onClick = { Toast.makeText(context,"abc",Toast.LENGTH_SHORT).show() }) {
+        IconButton(onClick = {
+
+            navController.navigate("addToList")
+
+            Toast.makeText(context, "abc", Toast.LENGTH_SHORT).show()
+        }) {
             Icon(
                 imageVector = Icons.Default.Add,
                 contentDescription = "Plus",
@@ -42,4 +54,10 @@ fun ButtonToAdd() {
         }
 
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun ButtonToAddPreview() {
+    ButtonToAdd(navController = rememberNavController())
 }

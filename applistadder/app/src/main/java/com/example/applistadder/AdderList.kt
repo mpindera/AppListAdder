@@ -14,8 +14,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -27,6 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 data class ListData(
     var time: String,
@@ -36,30 +42,38 @@ data class ListData(
 
 @Composable
 fun AdderList(navController: NavController) {
-
+    val names = remember { mutableStateListOf<ListData>() }
+    val coroutineScope = rememberCoroutineScope()
     val showDetails = remember { mutableStateOf(false) }
-
-    val names = listOf(
-        ListData("12:00", "01.05.2023", "Show"),
-        ListData("13:00", "11.05.2023", "ShowBAB"),
-        ListData("4:00", "15.05.2023", "ShowDAD"),
-        ListData("15:00", "16.05.2023", "ShowABC"),
-        ListData("6:00", "02.05.2023", "ShowABCD"),
-        ListData("7:00", "05.05.2023", "ShowABCDE"),
-        ListData("12:00", "01.05.2023", "Show"),
-        ListData("13:00", "11.05.2023", "ShowBAB"),
-        ListData("4:00", "15.05.2023", "ShowDAD"),
-        ListData("15:00", "16.05.2023", "ShowABC"),
-        ListData("6:00", "02.05.2023", "ShowABCD"),
-        ListData("7:00", "05.05.2023", "ShowABCDE"),
-        ListData("12:00", "01.05.2023", "Show"),
-        ListData("13:00", "11.05.2023", "ShowBAB"),
-        ListData("4:00", "15.05.2023", "ShowDAD"),
-        ListData("15:00", "16.05.2023", "ShowABC"),
-        ListData("6:00", "02.05.2023", "ShowABCD"),
-        ListData("7:00", "05.05.2023", "ShowABCDE"),
-    )
     var context = LocalContext.current
+    LaunchedEffect(Unit) {
+        withContext(Dispatchers.Default) {
+            delay(50)
+            names.addAll(
+                listOf(
+                    ListData("12:00", "01.05.2023", "Show"),
+                    ListData("13:00", "11.05.2023", "ShowBAB"),
+                    ListData("4:00", "15.05.2023", "ShowDAD"),
+                    ListData("15:00", "16.05.2023", "ShowABC"),
+                    ListData("6:00", "02.05.2023", "ShowABCD"),
+                    ListData("7:00", "05.05.2023", "ShowABCDE"),
+                    ListData("12:00", "01.05.2023", "Show"),
+                    ListData("13:00", "11.05.2023", "ShowBAB"),
+                    ListData("4:00", "15.05.2023", "ShowDAD"),
+                    ListData("15:00", "16.05.2023", "ShowABC"),
+                    ListData("6:00", "02.05.2023", "ShowABCD"),
+                    ListData("7:00", "05.05.2023", "ShowABCDE"),
+                    ListData("12:00", "01.05.2023", "Show"),
+                    ListData("13:00", "11.05.2023", "ShowBAB"),
+                    ListData("4:00", "15.05.2023", "ShowDAD"),
+                    ListData("15:00", "16.05.2023", "ShowABC"),
+                    ListData("6:00", "02.05.2023", "ShowABCD"),
+                    ListData("7:00", "05.05.2023", "ShowABCDE"),
+                )
+            )
+        }
+    }
+
     LazyColumn {
         items(names) { listdata ->
             Row(

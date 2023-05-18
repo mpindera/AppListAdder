@@ -9,10 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun DetailsScreen(description: String?) {
+    val context = LocalContext.current
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -21,10 +24,4 @@ fun DetailsScreen(description: String?) {
     ) {
         Text(text = description ?: "")
     }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun DetailScreenPreview() {
-    DetailsScreen("test")
 }
