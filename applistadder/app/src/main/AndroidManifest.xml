@@ -18,10 +18,29 @@
             android:theme="@style/Theme.AppListAdder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".RegisterAccountActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppListAdder" />
+
+        <activity
+            android:name=".LoginAccountActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppListAdder" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppListAdder" />
+
+
     </application>
 
 </manifest>
