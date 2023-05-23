@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -26,27 +27,7 @@ class RegisterAccountActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AppListAdderTheme {
-                val textEmail = remember {
-                    mutableStateOf("")
-                }
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(text = "email")
-                    TextField(value = textEmail.value, onValueChange = {
-                        textEmail.value = it
-                    })
-                    Text(text = "password")
-
-                    Button(onClick = {
-
-                    }, colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF9D640F))) {
-                        Text(text = "Login", color = Color.White)
-                    }
-                }
-
+                UIForRegister()
             }
         }
     }
