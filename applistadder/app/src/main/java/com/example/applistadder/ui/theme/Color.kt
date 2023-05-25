@@ -14,3 +14,5 @@ val backgroundTextField = Color(0xFFCFB6AF)
 val lightBrown = Color(0xB2CFB6AF)
 val lightWhite = Color(0xFFDEE3E9)
 val darkBrown = Color(0xEB776B67)
+
+val lightGray = Color(0xD53C3C3C)
